@@ -18,7 +18,7 @@ with open(bankpath, 'r') as bankfile:
     bankreader = csv.reader(bankfile, delimiter=',')
     
     # Skip csv header
-    bankheader = next(bankfile)
+    bankheader = next(bankreader)
 
     # Read each row on csv after header
     for row in bankreader:
