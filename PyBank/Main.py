@@ -44,13 +44,18 @@ for i in range(len(profitvar)):
     if profitvar[i] == gdecrease:
         gdposition = (i+1)
 
-# Make analysis into a variable to not repeat when exporting to text file
+# Define analysis variables
+totmonths = (len(month)) 
+total = (int(sum(profit)))
+avgvar = (int(sum(profitvar))/int(len(profitvar)))
+
+# Make analysis into a variable for easy text file export
 Analysis = (
     f"Financial Analysis \n"
     f"------------------------------ \n"
-    f"Total Months:{len(month)} \n"
-    f"Total: ${int(sum(profit))} \n"
-    f"Average Change: ${float(int(sum(profitvar))/int(len(profitvar))):.2f} \n"
+    f"Total Months:{totmonths} \n"
+    f"Total: ${total} \n"
+    f"Average Change: ${float(avgvar):.2f} \n"
     f"Greatest Increase in profits: {month[giposition]} (${gincrease}) \n"
     f"Greatest Decrease in Profits: {month[gdposition]} (${gdecrease}) \n")
 
@@ -59,7 +64,3 @@ print(Analysis)
 
 #Define output path
 bankout = os.path.join('Analysis',"PyBank.txt")
-
-# Export results to text file
-with open(bankout, 'w') as txtfile:
-    txtfile.writelines(f'{Analysis}')
